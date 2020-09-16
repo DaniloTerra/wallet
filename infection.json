@@ -1,0 +1,14 @@
+{
+    "source": {
+        "directories": [
+            "src/Model"
+        ]
+    },
+    "timeout": 10,
+    "logs": {
+        "text": "infection.log",
+        "summary": "php://stdout",
+        "perMutator": "per-mutator.md"
+    },
+    "testFramework": "codeception"
+}

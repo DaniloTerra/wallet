@@ -1,0 +1,39 @@
+{
+    "name": "daniloterra/wallet",
+    "description": "eWallet with DDD concepts",
+    "type": "project",
+    "require-dev": {
+        "codeception/codeception": "^4.1",
+        "codeception/module-phpbrowser": "^1.0.0",
+        "codeception/module-asserts": "^1.0.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Danilo Terra",
+            "email": "danilo_terra@live.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Wallet\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Wallet\\": "tests/unit"
+        }
+    },
+    "scripts": {
+        "test-unit": "php vendor/bin/codecept run",
+        "test-unit-coverage": "php vendor/bin/codecept run --coverage --coverage-xml=clover.xml --coverage-html=html",
+        "test-unit-mutation": "infection --threads=4 --only-covered --no-progress",
+
+        "php-stan": "phpstan analyse -c phpstan.neon",
+        "php-cpd": "phpcpd ./src",
+        "php-md": "phpmd ./src text cleancode,codesize,design,naming,unusedcode",
+        "php-cs": "phpcs --report=checkstyle --standard=PSR12 --extensions=php ./src",
+        "php-dephpend": "dephpend metrics ./src"
+    }
+}

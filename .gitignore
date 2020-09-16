@@ -1,0 +1,5 @@
+.idea/
+vendor/
+report/
+infection.log
+per-mutator.md

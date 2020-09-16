@@ -1,0 +1,20 @@
+suites:
+    unit:
+        path: .
+
+settings:
+    shuffle: true
+    lint: true
+paths:
+    tests: tests
+    output: tests/_output
+    support: tests/_support
+    data: tests
+coverage:
+    enabled: true
+    low_limit: 80
+    high_limit: 95
+    show_uncovered: true
+    remote: false
+    include:
+        - src/Model/*.php
