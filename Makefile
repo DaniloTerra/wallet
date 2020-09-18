@@ -22,6 +22,9 @@ test-unit-coverage:
 test-unit-mutation: test-unit-coverage
 	- @${WALLET_DEV_DOCKER_RUN} composer test-unit-mutation
 
+test-file:
+	- @${WALLET_DEV_DOCKER_RUN} php vendor/bin/codecept run ${FILE}
+
 # Quality Tools
 php-stan:
 	- @${WALLET_DEV_DOCKER_RUN} composer php-stan
