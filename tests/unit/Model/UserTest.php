@@ -7,7 +7,7 @@ namespace Wallet\Model;
 use Codeception\Test\Unit;
 
 /**
- * @coversDefaultClass \Wallet\Model\User
+ * @coversDefaultClass \Wallet\Model\Wallet
  */
 final class UserTest extends Unit
 {
@@ -16,7 +16,7 @@ final class UserTest extends Unit
      */
     public function testUserDebitShouldDecreaseBalance()
     {
-        $user = new User();
+        $user = new Wallet();
 
         $initialBalance = $user->getBalance();
         $debitAmount = new Money(100.00);
@@ -35,7 +35,7 @@ final class UserTest extends Unit
      */
     public function testUserCreditShouldIncreaseBalance()
     {
-        $user = new User();
+        $user = new Wallet();
 
         $initialBalance = $user->getBalance();
         $creditAmount = new Money(100.00);

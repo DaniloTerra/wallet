@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Wallet\Model;
 
-final class User
+final class Wallet
 {
     private Money $balance;
 
