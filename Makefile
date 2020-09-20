@@ -25,6 +25,9 @@ test-unit-mutation: test-unit-coverage
 test-file:
 	- @${WALLET_DEV_DOCKER_RUN} php vendor/bin/codecept run ${FILE}
 
+test-file-coverage:
+	- @${WALLET_DEV_DOCKER_RUN} php vendor/bin/codecept run ${FILE} --coverage --coverage-xml=clover.xml --coverage-html=html
+
 # Quality Tools
 php-stan:
 	- @${WALLET_DEV_DOCKER_RUN} composer php-stan

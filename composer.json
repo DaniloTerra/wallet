@@ -14,7 +14,9 @@
             "email": "danilo_terra@live.com"
         }
     ],
-    "require": {},
+    "require": {
+      "ext-spltype": "*"
+    },
     "autoload": {
         "psr-4": {
             "Wallet\\": "src"

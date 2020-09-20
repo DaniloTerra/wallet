@@ -7,43 +7,49 @@ namespace Wallet\Model;
 use Codeception\Test\Unit;
 
 /**
- * @coversDefaultClass \Wallet\Model\Wallet
+ * @coversDefaultClass \Wallet\Model\User
  */
 final class UserTest extends Unit
 {
+    private function walletWithBalance()
+    {
+        $wallet = Wallet::fresh();
+        $wallet->credit(new Money(500.00));
+        return $wallet;
+    }
+
     /**
      * @covers ::debit
      */
-    public function testUserDebitShouldDecreaseBalance()
+    public function testUserDebitShouldDecreaseTheirWalletBalance()
     {
-        $user = new Wallet();
-
+        $user = new User($this->walletWithBalance());
         $initialBalance = $user->getBalance();
-        $debitAmount = new Money(100.00);
 
-        $user->debit($debitAmount);
+        $debit = new Money(50.00);
 
-        $expectedBalance = $initialBalance->decrease($debitAmount);
+        $expectedBalance = $initialBalance->decrease($debit);
 
-        static::assertEquals($expectedBalance->getValue(), $user->getBalance()->getValue());
-        static::assertInstanceOf(Money::class, $initialBalance);
+        $user->debit($debit);
+
+        static::assertTrue($expectedBalance->equals($user->getBalance()));
     }
 
 
     /**
      * @covers ::credit
      */
-    public function testUserCreditShouldIncreaseBalance()
+    public function testUserCreditShouldIncreaseTheirWalletBalance()
     {
-        $user = new Wallet();
-
+        $user = new User($this->walletWithBalance());
         $initialBalance = $user->getBalance();
-        $creditAmount = new Money(100.00);
 
-        $user->credit($creditAmount);
+        $credit = new Money(50.00);
 
-        $expectedBalance = $initialBalance->increase($creditAmount);
+        $expectedBalance = $initialBalance->increase($credit);
 
-        static::assertEquals($expectedBalance->getValue(), $user->getBalance()->getValue());
+        $user->credit($credit);
+
+        static::assertTrue($expectedBalance->equals($user->getBalance()));
     }
 }

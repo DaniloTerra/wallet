@@ -1,14 +1,206 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1600286165">
-  <project timestamp="1600286165">
+<coverage generated="1600633075">
+  <project timestamp="1600633075">
+    <file name="/home/dterra/danilo/project/wallet/src/Model/Account.php">
+      <class name="Wallet\Model\Account" namespace="global">
+        <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
+      </class>
+      <line num="11" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="13" type="stmt" count="2"/>
+      <line num="14" type="stmt" count="2"/>
+      <line num="16" type="method" name="getBalance" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="18" type="stmt" count="2"/>
+      <metrics loc="20" ncloc="20" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="5" coveredelements="5"/>
+    </file>
+    <file name="/home/dterra/danilo/project/wallet/src/Model/Authorizer.php">
+      <metrics loc="13" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="/home/dterra/danilo/project/wallet/src/Model/Collection.php">
+      <metrics loc="12" ncloc="12" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="/home/dterra/danilo/project/wallet/src/Model/Creditable.php">
+      <metrics loc="10" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="/home/dterra/danilo/project/wallet/src/Model/Debitable.php">
+      <metrics loc="10" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="/home/dterra/danilo/project/wallet/src/Model/Enum.php">
+      <class name="Wallet\Model\Enum" namespace="global">
+        <metrics complexity="4" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="10" coveredelements="10"/>
+      </class>
+      <line num="14" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="10"/>
+      <line num="16" type="stmt" count="10"/>
+      <line num="18" type="stmt" count="10"/>
+      <line num="19" type="stmt" count="8"/>
+      <line num="22" type="stmt" count="2"/>
+      <line num="23" type="stmt" count="2"/>
+      <line num="25" type="method" name="getValue" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="27" type="stmt" count="2"/>
+      <line num="30" type="method" name="equals" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="32" type="stmt" count="1"/>
+      <metrics loc="34" ncloc="34" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="10" coveredelements="10"/>
+    </file>
+    <file name="/home/dterra/danilo/project/wallet/src/Model/InsufficientBalanceException.php">
+      <class name="Wallet\Model\InsufficientBalanceException" namespace="global">
+        <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </class>
+      <metrics loc="11" ncloc="11" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="/home/dterra/danilo/project/wallet/src/Model/Merchant.php">
+      <class name="Wallet\Model\Merchant" namespace="global">
+        <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+      </class>
+      <line num="9" type="method" name="credit" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="11" type="stmt" count="1"/>
+      <line num="12" type="stmt" count="1"/>
+      <metrics loc="13" ncloc="13" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+    </file>
+    <file name="/home/dterra/danilo/project/wallet/src/Model/Money.php">
+      <class name="Wallet\Model\Money" namespace="global">
+        <metrics complexity="6" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="13" coveredelements="13"/>
+      </class>
+      <line num="11" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="3"/>
+      <line num="13" type="stmt" count="3"/>
+      <line num="14" type="stmt" count="1"/>
+      <line num="17" type="stmt" count="2"/>
+      <line num="18" type="stmt" count="2"/>
+      <line num="20" type="method" name="increase" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="22" type="stmt" count="1"/>
+      <line num="25" type="method" name="decrease" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="27" type="stmt" count="1"/>
+      <line num="30" type="method" name="getValue" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="32" type="stmt" count="2"/>
+      <line num="35" type="method" name="equals" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="37" type="stmt" count="1"/>
+      <metrics loc="39" ncloc="39" classes="1" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="13" coveredelements="13"/>
+    </file>
+    <file name="/home/dterra/danilo/project/wallet/src/Model/Nature.php">
+      <class name="Wallet\Model\Nature" namespace="global">
+        <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </class>
+      <metrics loc="12" ncloc="12" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="/home/dterra/danilo/project/wallet/src/Model/SingleValueObject.php">
+      <metrics loc="10" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="/home/dterra/danilo/project/wallet/src/Model/Transaction.php">
+      <class name="Wallet\Model\Transaction" namespace="global">
+        <metrics complexity="7" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="18" coveredelements="18"/>
+      </class>
+      <line num="13" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="15" type="stmt" count="2"/>
+      <line num="16" type="stmt" count="2"/>
+      <line num="17" type="stmt" count="2"/>
+      <line num="19" type="method" name="getNature" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="21" type="stmt" count="2"/>
+      <line num="24" type="method" name="getAmount" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="26" type="stmt" count="2"/>
+      <line num="29" type="method" name="isDebit" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="31" type="stmt" count="1"/>
+      <line num="34" type="method" name="isCredit" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="36" type="stmt" count="1"/>
+      <line num="39" type="method" name="Debit" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="41" type="stmt" count="1"/>
+      <line num="42" type="stmt" count="1"/>
+      <line num="47" type="method" name="Credit" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="49" type="stmt" count="1"/>
+      <line num="50" type="stmt" count="1"/>
+      <metrics loc="54" ncloc="54" classes="1" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="11" coveredstatements="11" elements="18" coveredelements="18"/>
+    </file>
+    <file name="/home/dterra/danilo/project/wallet/src/Model/TransactionCollection.php">
+      <class name="Wallet\Model\TransactionCollection" namespace="global">
+        <metrics complexity="3" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="7" coveredelements="7"/>
+      </class>
+      <line num="13" type="method" name="push" visibility="public" complexity="2" crap="2" count="7"/>
+      <line num="15" type="stmt" count="7"/>
+      <line num="16" type="stmt" count="5"/>
+      <line num="19" type="stmt" count="2"/>
+      <line num="20" type="stmt" count="2"/>
+      <line num="22" type="method" name="getList" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="24" type="stmt" count="2"/>
+      <line num="26" type="stmt" count="0"/>
+      <metrics loc="25" ncloc="25" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="5" coveredstatements="5" elements="7" coveredelements="7"/>
+    </file>
+    <file name="/home/dterra/danilo/project/wallet/src/Model/Transfer.php">
+      <class name="Wallet\Model\Transfer" namespace="global">
+        <metrics complexity="3" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="11" coveredelements="11"/>
+      </class>
+      <line num="11" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="6"/>
+      <line num="13" type="stmt" count="6"/>
+      <line num="14" type="stmt" count="6"/>
+      <line num="16" type="method" name="transfer" visibility="public" complexity="1" crap="1" count="6"/>
+      <line num="18" type="stmt" count="6"/>
+      <line num="20" type="stmt" count="4"/>
+      <line num="21" type="stmt" count="3"/>
+      <line num="22" type="stmt" count="3"/>
+      <line num="24" type="method" name="authorize" visibility="private" complexity="1" crap="1" count="6"/>
+      <line num="26" type="stmt" count="6"/>
+      <line num="27" type="stmt" count="4"/>
+      <metrics loc="28" ncloc="28" classes="1" methods="3" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="11" coveredelements="11"/>
+    </file>
+    <file name="/home/dterra/danilo/project/wallet/src/Model/TransferNotAuthorizedException.php">
+      <class name="Wallet\Model\TransferNotAuthorizedException" namespace="global">
+        <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </class>
+      <metrics loc="11" ncloc="11" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
     <file name="/home/dterra/danilo/project/wallet/src/Model/User.php">
       <class name="Wallet\Model\User" namespace="global">
-        <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+        <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
       </class>
-      <line num="9" type="method" name="foo" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="9" type="method" name="debit" visibility="public" complexity="1" crap="1" count="1"/>
       <line num="11" type="stmt" count="1"/>
-      <metrics loc="13" ncloc="13" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+      <line num="12" type="stmt" count="1"/>
+      <line num="14" type="method" name="credit" visibility="public" complexity="1" crap="1" count="1"/>
+      <line num="16" type="stmt" count="1"/>
+      <line num="17" type="stmt" count="1"/>
+      <metrics loc="18" ncloc="18" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="6" coveredelements="6"/>
     </file>
-    <metrics files="1" loc="13" ncloc="13" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+    <file name="/home/dterra/danilo/project/wallet/src/Model/ValueObject.php">
+      <metrics loc="11" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="/home/dterra/danilo/project/wallet/src/Model/Wallet.php">
+      <class name="Wallet\Model\Wallet" namespace="global">
+        <metrics complexity="14" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="29" coveredstatements="29" elements="36" coveredelements="36"/>
+      </class>
+      <line num="11" type="method" name="__construct" visibility="private" complexity="1" crap="1" count="4"/>
+      <line num="13" type="stmt" count="4"/>
+      <line num="14" type="stmt" count="4"/>
+      <line num="16" type="method" name="apply" visibility="private" complexity="3" crap="3" count="1"/>
+      <line num="18" type="stmt" count="1"/>
+      <line num="19" type="stmt" count="1"/>
+      <line num="22" type="stmt" count="1"/>
+      <line num="23" type="stmt" count="1"/>
+      <line num="25" type="stmt" count="1"/>
+      <line num="27" type="method" name="debit" visibility="public" complexity="2" crap="2" count="3"/>
+      <line num="29" type="stmt" count="3"/>
+      <line num="30" type="stmt" count="3"/>
+      <line num="31" type="stmt" count="1"/>
+      <line num="34" type="stmt" count="2"/>
+      <line num="35" type="stmt" count="2"/>
+      <line num="36" type="stmt" count="2"/>
+      <line num="38" type="method" name="credit" visibility="public" complexity="1" crap="1" count="2"/>
+      <line num="40" type="stmt" count="2"/>
+      <line num="41" type="stmt" count="2"/>
+      <line num="42" type="stmt" count="2"/>
+      <line num="44" type="method" name="getBalance" visibility="public" complexity="4" crap="4" count="4"/>
+      <line num="46" type="stmt" count="4"/>
+      <line num="47" type="stmt" count="4"/>
+      <line num="48" type="stmt" count="3"/>
+      <line num="49" type="stmt" count="2"/>
+      <line num="51" type="stmt" count="3"/>
+      <line num="52" type="stmt" count="3"/>
+      <line num="55" type="stmt" count="4"/>
+      <line num="58" type="method" name="fromTransactions" visibility="public" complexity="2" crap="2" count="1"/>
+      <line num="60" type="stmt" count="1"/>
+      <line num="62" type="stmt" count="1"/>
+      <line num="63" type="stmt" count="1"/>
+      <line num="66" type="stmt" count="1"/>
+      <line num="69" type="method" name="fresh" visibility="public" complexity="1" crap="1" count="5"/>
+      <line num="71" type="stmt" count="5"/>
+      <line num="72" type="stmt" count="5"/>
+      <metrics loc="75" ncloc="75" classes="1" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="29" coveredstatements="29" elements="36" coveredelements="36"/>
+    </file>
+    <metrics files="18" loc="406" ncloc="402" classes="9" methods="32" coveredmethods="32" conditionals="0" coveredconditionals="0" statements="77" coveredstatements="77" elements="109" coveredelements="109"/>
   </project>
 </coverage>

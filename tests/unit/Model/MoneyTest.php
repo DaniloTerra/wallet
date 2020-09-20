@@ -27,6 +27,19 @@ final class MoneyTest extends Unit
     /**
      * @covers ::__construct
      */
+    public function testConstructWithZeroValue()
+    {
+        $value = 0.00;
+
+        $amount = new Money($value);
+
+        static::assertInstanceOf(Money::class, $amount);
+    }
+
+
+    /**
+     * @covers ::__construct
+     */
     public function testConstructWithNegativeValueShouldThrowException()
     {
         static::expectException(\InvalidArgumentException::class);
@@ -37,6 +50,7 @@ final class MoneyTest extends Unit
 
     /**
      * @covers ::increase
+     * @covers ::getValue
      */
     public function testIncreaseShouldReturnAnIncreasedInstance()
     {
@@ -49,7 +63,8 @@ final class MoneyTest extends Unit
     }
 
     /**
-     * @covers ::increase
+     * @covers ::decrease
+     * @covers ::getValue
      */
     public function testDecreaseShouldReturnADecreasedInstance()
     {
@@ -59,5 +74,17 @@ final class MoneyTest extends Unit
 
         static::assertNotSame($amount, $increased);
         static::assertEquals(100.00, $increased->getValue());
+    }
+
+
+    /**
+     * @covers ::equals
+     */
+    public function testEqualityByValue()
+    {
+        $money1 = new Money(50.00);
+        $money2 = new Money(50.00);
+        static::assertTrue($money1->equals($money2));
+        static::assertFalse($money1 === $money2);
     }
 }
