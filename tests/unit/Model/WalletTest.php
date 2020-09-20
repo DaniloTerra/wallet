@@ -89,14 +89,14 @@ final class WalletTest extends Unit
     public function testDebitFromExitingWalletShouldDecreaseBalance()
     {
         $transactions = new TransactionCollection();
-        $transactions->push(Transaction::Credit(new Money(10.00)));
-        $transactions->push(Transaction::Credit(new Money(10.00)));
-        $transactions->push(Transaction::Credit(new Money(10.00)));
-        $transactions->push(Transaction::Credit(new Money(10.00)));
-        $transactions->push(Transaction::Credit(new Money(10.00)));
+        $transactions->push(Transaction::credit(new Money(10.00)));
+        $transactions->push(Transaction::credit(new Money(10.00)));
+        $transactions->push(Transaction::credit(new Money(10.00)));
+        $transactions->push(Transaction::credit(new Money(10.00)));
+        $transactions->push(Transaction::credit(new Money(10.00)));
 
-        $transactions->push(Transaction::Credit(new Money(10.00)));
-        $transactions->push(Transaction::Debit(new Money(10.00)));
+        $transactions->push(Transaction::credit(new Money(10.00)));
+        $transactions->push(Transaction::debit(new Money(10.00)));
 
 
         $wallet = Wallet::fromTransactions($transactions);

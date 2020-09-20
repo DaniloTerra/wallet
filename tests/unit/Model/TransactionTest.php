@@ -23,7 +23,7 @@ final class TransactionTest extends Unit
         $amount = new Money(10.00);
         $nature = new Nature(Nature::DEBIT);
 
-        $debit = Transaction::Debit($amount);
+        $debit = Transaction::debit($amount);
 
         static::assertEquals($amount, $debit->getAmount());
         static::assertEquals($nature, $debit->getNature());
@@ -42,7 +42,7 @@ final class TransactionTest extends Unit
         $amount = new Money(10.00);
         $nature = new Nature(Nature::CREDIT);
 
-        $credit = Transaction::Credit($amount);
+        $credit = Transaction::credit($amount);
 
         static::assertEquals($amount, $credit->getAmount());
         static::assertEquals($nature, $credit->getNature());

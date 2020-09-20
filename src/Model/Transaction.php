@@ -36,7 +36,7 @@ final class Transaction implements ValueObject
         return $this->nature->equals(new Nature(Nature::CREDIT));
     }
 
-    public static function Debit(Money $amount): self
+    public static function debit(Money $amount): self
     {
         return new static(
             new Nature(Nature::DEBIT),
@@ -44,7 +44,7 @@ final class Transaction implements ValueObject
         );
     }
 
-    public static function Credit(Money $amount): self
+    public static function credit(Money $amount): self
     {
         return new static(
             new Nature(Nature::CREDIT),

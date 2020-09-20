@@ -23,8 +23,8 @@ final class TransactionCollectionTest extends Unit
     public function validValues()
     {
         return [
-            [Transaction::Debit(new Money(10.00))],
-            [Transaction::Credit(new Money(10.00))],
+            [Transaction::debit(new Money(10.00))],
+            [Transaction::credit(new Money(10.00))],
         ];
     }
 

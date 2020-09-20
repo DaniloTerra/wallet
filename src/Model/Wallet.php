@@ -31,13 +31,13 @@ final class Wallet
             throw new InsufficientBalanceException();
         }
 
-        $debit = Transaction::Debit($amount);
+        $debit = Transaction::debit($amount);
         $this->transactions->push($debit);
     }
 
     public function credit(Money $amount): void
     {
-        $credit = Transaction::Credit($amount);
+        $credit = Transaction::credit($amount);
         $this->transactions->push($credit);
     }
 
