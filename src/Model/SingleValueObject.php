@@ -6,5 +6,7 @@ namespace Wallet\Model;
 
 interface SingleValueObject
 {
+    public function getValue();
 
+    public function equals(self $instance): bool;
 }

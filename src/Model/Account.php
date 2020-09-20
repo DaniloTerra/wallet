@@ -17,4 +17,8 @@ abstract class Account
     {
         return $this->wallet->getBalance();
     }
+
+    abstract function debit(Money $amount): void;
+
+    abstract function credit(Money $amount): void;
 }
