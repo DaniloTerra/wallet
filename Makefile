@@ -1,10 +1,6 @@
 WALLET_DEV_DOCKER_IMAGE = wallet_api:latest
 WALLET_DEV_DOCKER_RUN = docker run --rm -v ${PWD}:${PWD} -w ${PWD} ${WALLET_DEV_DOCKER_IMAGE}
 
-# Docker
-docker-build-dev-image:
-	- @docker build --target dev -t ${WALLET_DEV_DOCKER_IMAGE} .
-
 # Dependencies
 dependencies-install:
 	- @${WALLET_DEV_DOCKER_RUN} composer install
@@ -35,17 +31,8 @@ php-stan:
 php-cpd:
 	- @${WALLET_DEV_DOCKER_RUN} composer php-cpd
 
-php-md:
-	- @${WALLET_DEV_DOCKER_RUN} composer php-md
-
-php-cs:
-	- @${WALLET_DEV_DOCKER_RUN} composer php-cs
-
-php-dephpend:
-	- @${WALLET_DEV_DOCKER_RUN} composer php-dephpend
-
 # Hook
-pre-push: php-stan php-cpd php-md php-cs php-dephpend test-unit-coverage test-unit-mutation
+pre-push: php-stan php-cpd test-unit-coverage test-unit-mutation
 
 # API
 api-up:
