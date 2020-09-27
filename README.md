@@ -2,11 +2,20 @@
 
 POC de uma carteira virtual feita em PHP e utilizando alguns conceitos de DDD
 
+# Para iniciar a stack, fazendo download e construção de imagens docker:
+```
+make api-up
+```
+
+# Para instalar as dependências necessárias:
+```
+make dependencies-install
+```
+
 # Para rodar os tests e ferramentas de análise de código:
 ```
 make pre-push
 ```
-
 Ou para executar de forma individual:
 ```
 make php-stan
@@ -16,13 +25,7 @@ make test-unit-mutation
 ```
 
 
-# Para iniciar a API:
-```
-make dependencies-install
-make api-up
-```
-
-Após executar esses comandos a API irá ficar disponível na em `http://localhost/`
+A API irá ficar disponível em `http://localhost/`
 
 # Para executar o comando de transferência entre contas:
 ```
