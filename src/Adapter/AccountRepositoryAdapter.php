@@ -30,7 +30,7 @@ final class AccountRepositoryAdapter implements AccountRepository
     }
 
 
-    public function get(DbId $id): Account
+    public function getAccount(DbId $id): Account
     {
         try {
             $account = $this->selectAccount($id);
@@ -100,13 +100,13 @@ final class AccountRepositoryAdapter implements AccountRepository
     }
 
 
-    public function push(MoneyTransferred $event): void
+    public function addTransfer(MoneyTransferred $event): void
     {
         try {
             $this->connection->beginTransaction();
 
-            $this->debitPayee($event->getPayee(), $event->getAmount());
-            $this->creditPayer($event->getPayer(), $event->getAmount());
+            $this->debitPayer($event->getPayer(), $event->getAmount());
+            $this->creditPayee($event->getPayee(), $event->getAmount());
             $this->registerTransfer($event);
 
             $this->connection->commit();
@@ -117,20 +117,20 @@ final class AccountRepositoryAdapter implements AccountRepository
     }
 
 
-    private function debitPayee(Account $payee, Money $amount): void
+    private function debitPayer(Account $payer, Money $amount): void
     {
         $insert = $this->connection->createQueryBuilder();
 
         $insert->insert('user_wallet')
             ->setValue('user_id', ':userId')
             ->setValue('debit', ':debit')
-            ->setParameter('userId', $payee->getId()->getValue())
+            ->setParameter('userId', $payer->getId()->getValue())
             ->setParameter('debit', $amount->getValue())
             ->execute();
     }
 
 
-    private function creditPayer(Account $payee, Money $amount): void
+    private function creditPayee(Account $payee, Money $amount): void
     {
         $insert = $this->connection->createQueryBuilder();
 

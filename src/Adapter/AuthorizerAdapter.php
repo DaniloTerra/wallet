@@ -21,8 +21,6 @@ final class AuthorizerAdapter implements Authorizer
 
     public function authorize(): void
     {
-        // Compartamento provisório
-        return;
         try {
             $response = $this->http->get(static::AUTHORIZER_URL);
 

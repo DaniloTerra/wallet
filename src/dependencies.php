@@ -9,7 +9,7 @@ use Doctrine\DBAL\DriverManager;
 $containerBuilder = new DI\ContainerBuilder();
 
 $containerBuilder->addDefinitions([
-    DBConnection::class => function (Container $container) {
+    DBConnection::class => function () {
         // hardcoded porque se trata de uma POC
         return DriverManager::getConnection([
             'dbname' => 'wallet',
@@ -27,13 +27,13 @@ $containerBuilder->addDefinitions([
         );
     },
 
-    \Wallet\Model\Authorizer::class => function (Container $container) {
+    \Wallet\Model\Authorizer::class => function () {
         return new \Wallet\Adapter\AuthorizerAdapter(
             new \GuzzleHttp\Client()
         );
     },
 
-    \Wallet\Application\Notifier::class => function (Container $container) {
+    \Wallet\Application\Notifier::class => function () {
         return new \Wallet\Adapter\NotifierAdapter(
             new \GuzzleHttp\Client()
         );

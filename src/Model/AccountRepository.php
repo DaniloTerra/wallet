@@ -6,7 +6,7 @@ namespace Wallet\Model;
 
 interface AccountRepository
 {
-    public function get(DbId $id): Account;
+    public function getAccount(DbId $id): Account;
 
-    public function push(MoneyTransferred $event): void;
+    public function addTransfer(MoneyTransferred $event): void;
 }

@@ -23,7 +23,7 @@ final class UserTest extends Unit
      */
     public function testUserDebitShouldDecreaseTheirWalletBalance()
     {
-        $user = new User($this->walletWithBalance());
+        $user = new User(new DbId(10), $this->walletWithBalance());
         $initialBalance = $user->getBalance();
 
         $debit = new Money(50.00);
@@ -41,7 +41,7 @@ final class UserTest extends Unit
      */
     public function testUserCreditShouldIncreaseTheirWalletBalance()
     {
-        $user = new User($this->walletWithBalance());
+        $user = new User(new DbId(10), $this->walletWithBalance());
         $initialBalance = $user->getBalance();
 
         $credit = new Money(50.00);

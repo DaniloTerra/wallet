@@ -27,8 +27,8 @@ final class TransferTest extends Unit
     {
         $authorizer = static::createMock(Authorizer::class);
 
-        $payer = new User($this->walletWithBalance());
-        $payee = new User($this->walletWithBalance());
+        $payer = new User(new DbId(10), $this->walletWithBalance());
+        $payee = new User(new DbId(20), $this->walletWithBalance());
         $payerBalance = $payer->getBalance();
         $payeeBalance = $payer->getBalance();
 
@@ -55,8 +55,8 @@ final class TransferTest extends Unit
         $authorizer = static::createMock(Authorizer::class);
         $authorizer->method('authorize')->willThrowException(new TransferNotAuthorizedException());
 
-        $payer = new User($this->walletWithBalance());
-        $payee = new User($this->walletWithBalance());
+        $payer = new User(new DbId(10), $this->walletWithBalance());
+        $payee = new User(new DbId(20), $this->walletWithBalance());
 
         $transfer = new Transfer($authorizer);
         $transferAmount = new Money(25.00);
@@ -76,8 +76,8 @@ final class TransferTest extends Unit
         $authorizer = static::createMock(Authorizer::class);
         $authorizer->method('authorize')->willThrowException(new TransferNotAuthorizedException());
 
-        $payer = new User($this->walletWithBalance());
-        $payee = new User($this->walletWithBalance());
+        $payer = new User(new DbId(10), $this->walletWithBalance());
+        $payee = new User(new DbId(20), $this->walletWithBalance());
         $payerBalance = $payer->getBalance();
         $payeeBalance = $payer->getBalance();
 
@@ -101,8 +101,8 @@ final class TransferTest extends Unit
     {
         $authorizer = static::createMock(Authorizer::class);
 
-        $payer = new User($this->walletWithBalance());
-        $payee = new User($this->walletWithBalance());
+        $payer = new User(new DbId(10), $this->walletWithBalance());
+        $payee = new User(new DbId(20), $this->walletWithBalance());
         $payerBalance = $payer->getBalance();
         $payeeBalance = $payer->getBalance();
 
@@ -128,8 +128,8 @@ final class TransferTest extends Unit
     {
         $authorizer = static::createMock(Authorizer::class);
 
-        $payer = new User($this->walletWithBalance());
-        $payee = new Merchant($this->walletWithBalance());
+        $payer = new User(new DbId(10), $this->walletWithBalance());
+        $payee = new Merchant(new DbId(20), $this->walletWithBalance());
         $payerBalance = $payer->getBalance();
         $payeeBalance = $payer->getBalance();
 
@@ -155,8 +155,8 @@ final class TransferTest extends Unit
     {
         $authorizer = static::createMock(Authorizer::class);
 
-        $payer = new User(Wallet::fresh());
-        $payee = new User($this->walletWithBalance());
+        $payer = new User(new DbId(10), Wallet::fresh());
+        $payee = new User(new DbId(20), $this->walletWithBalance());
 
         $transfer = new Transfer($authorizer);
         $transferAmount = new Money(25.00);

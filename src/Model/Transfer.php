@@ -6,15 +6,10 @@ namespace Wallet\Model;
 
 final class Transfer
 {
-    private Uuid $identification;
-
     private Authorizer $authorizer;
 
-    public function __construct(
-        Uuid $identification,
-        Authorizer $authorizer
-    ) {
-        $this->identification = $identification;
+    public function __construct(Authorizer $authorizer)
+    {
         $this->authorizer = $authorizer;
     }
 

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Wallet\Adapter;
 
 use GuzzleHttp\Client as HttpClient;
+use Wallet\Application\NotificationFailedException;
 use Wallet\Application\Notifier;
 
 final class NotifierAdapter implements Notifier
@@ -21,8 +22,6 @@ final class NotifierAdapter implements Notifier
 
     public function notify(int $payer, int $payee, float $value, string $message)
     {
-        // Compartamento provisório
-        return;
         try {
             $response = $this->http->get(static::NOTIFY_URL);
 

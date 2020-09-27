@@ -9,9 +9,7 @@ use Wallet\Model\AccountRepository;
 use Wallet\Model\Authorizer;
 use Wallet\Model\DbId;
 use Wallet\Model\Money;
-use Wallet\Model\TransferService;
 use Wallet\Model\Transfer as AggregateRoot;
-use Wallet\Model\Uuid;
 
 final class Transfer
 {
@@ -33,23 +31,20 @@ final class Transfer
 
     public function transfer(int $payer, int $payee, float $amount)
     {
-        $payerEntity = $this->accountRepository->get(new DbId($payer));
-        $payeeEntity = $this->accountRepository->get(new DbId($payee));
+        $payerEntity = $this->accountRepository->getAccount(new DbId($payer));
+        $payeeEntity = $this->accountRepository->getAccount(new DbId($payee));
         $amountMoney = new Money($amount);
 
-        $aggregate = new AggregateRoot(
-            Uuid::generate(),
-            $this->authorizer
-        );
+        $aggregate = new AggregateRoot($this->authorizer);
 
-        $transferred = $aggregate->transfer($payerEntity, $payeeEntity, $amountMoney);
-        $this->accountRepository->push($transferred);
+        $moneyTransferred = $aggregate->transfer($payerEntity, $payeeEntity, $amountMoney);
+        $this->accountRepository->addTransfer($moneyTransferred);
 
         $this->notifier->notify(
             $payer,
             $payee,
             $amount,
-            sprintf("Você recebeu uma transferência no valor de %s", $amount
-        ));
+            sprintf("Você recebeu uma transferência no valor de %s", $amount)
+        );
     }
 }

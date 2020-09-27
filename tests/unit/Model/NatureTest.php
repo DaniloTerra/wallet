@@ -6,15 +6,9 @@ namespace Wallet\Model;
 
 use Codeception\Test\Unit;
 
-/**
- * @coversDefaultClass \Wallet\Model\Nature
- */
 final class NatureTest extends Unit
 {
     /**
-     * @covers ::__construct
-     * @covers ::getValue
-     *
      * @dataProvider validValues
      */
     public function testConstructionWithValidValuesShouldReturnAnInstance($value)
@@ -35,8 +29,6 @@ final class NatureTest extends Unit
 
 
     /**
-     * @covers ::__construct
-     *
      * @dataProvider invalidValues
      */
     public function testConstructionWithInvalidValuesShouldThrowsAnException($value)
@@ -60,9 +52,6 @@ final class NatureTest extends Unit
     }
 
 
-    /**
-     * @covers ::equals
-     */
     public function testEqualityByValue()
     {
         $debit1 = new Nature(Nature::DEBIT);

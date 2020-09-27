@@ -23,7 +23,8 @@ final class MerchantTest extends Unit
      */
     public function testMerchantCreditShouldIncreaseTheirWalletBalance()
     {
-        $merchant = new Merchant($this->walletWithBalance());
+        $id = new DbId(10);
+        $merchant = new Merchant($id, $this->walletWithBalance());
         $initialBalance = $merchant->getBalance();
 
         $credit = new Money(50.00);
@@ -33,5 +34,21 @@ final class MerchantTest extends Unit
         $merchant->credit($credit);
 
         static::assertTrue($expectedBalance->equals($merchant->getBalance()));
+    }
+
+
+    /**
+     * @covers ::debit
+     */
+    public function testMerchantDebitShouldThrowsAnException()
+    {
+        $id = new DbId(10);
+        $merchant = new Merchant($id, $this->walletWithBalance());
+
+        $debit = new Money(50.00);
+
+        static::expectException(TransferNotAuthorizedException::class);
+
+        $merchant->debit($debit);
     }
 }
