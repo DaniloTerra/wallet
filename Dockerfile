@@ -1,5 +1,7 @@
 FROM php:7.4-fpm AS prod
 
+RUN docker-php-ext-install mysqli pdo pdo_mysql
+
 FROM prod AS dev
 
 #Tools

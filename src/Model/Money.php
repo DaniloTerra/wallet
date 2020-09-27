@@ -6,7 +6,7 @@ namespace Wallet\Model;
 
 final class Money implements SingleValueObject
 {
-    private float $value;
+    use SingleValueObjectBehavior;
 
     public function __construct(float $value)
     {
@@ -25,15 +25,5 @@ final class Money implements SingleValueObject
     public function decrease(self $amount): self
     {
         return new static($this->value - $amount->getValue());
-    }
-
-    public function getValue(): float
-    {
-        return $this->value;
-    }
-
-    public function equals(self $instance): bool
-    {
-        return $instance->getValue() === $this->value;
     }
 }

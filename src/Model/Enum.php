@@ -9,7 +9,7 @@ use InvalidArgumentException;
 
 class Enum implements SingleValueObject
 {
-    protected $value;
+    use SingleValueObjectBehavior;
 
     public function __construct($value)
     {
@@ -20,15 +20,5 @@ class Enum implements SingleValueObject
         }
 
         $this->value = $value;
-    }
-
-    public function getValue()
-    {
-        return $this->value;
-    }
-
-    public function equals(self $instance): bool
-    {
-        return $instance->getValue() === $this->value;
     }
 }

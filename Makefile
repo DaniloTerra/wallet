@@ -1,4 +1,4 @@
-WALLET_DEV_DOCKER_IMAGE = daniloterra/wallet:dev
+WALLET_DEV_DOCKER_IMAGE = wallet_api:latest
 WALLET_DEV_DOCKER_RUN = docker run --rm -v ${PWD}:${PWD} -w ${PWD} ${WALLET_DEV_DOCKER_IMAGE}
 
 # Docker
@@ -46,3 +46,10 @@ php-dephpend:
 
 # Hook
 pre-push: php-stan php-cpd php-md php-cs php-dephpend test-unit-coverage test-unit-mutation
+
+# API
+api-up:
+	- @docker-compose up -d
+
+api-down:
+	- @docker-compose down

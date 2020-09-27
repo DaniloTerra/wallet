@@ -1,0 +1,46 @@
+version: '3.4'
+
+services:
+  web:
+    image: nginx:latest
+    container_name: 'proxy'
+    ports:
+      - "80:80"
+    volumes:
+      - ./:/wallet
+      - ./conf/nginx.conf:/etc/nginx/conf.d/default.conf
+    links:
+      - api
+
+  api:
+    build:
+      context: .
+      target: 'dev'
+    container_name: 'api'
+    volumes:
+      - ./:/wallet
+    depends_on:
+      - db
+    links:
+      - db:wallet.database.intranet
+
+  db:
+    image: mariadb:10
+    container_name: database
+    restart: always
+    ports:
+      - 3306:3306
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./data:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: wallet
+      MYSQL_ROOT_PASSWORD: wallet
+
+  flyway:
+    image: flyway/flyway
+    command: -url=jdbc:mysql://db -schemas=wallet -user=root -password=wallet -connectRetries=60 migrate
+    volumes:
+      - ./migrations:/flyway/sql
+    depends_on:
+      - db

@@ -3,3 +3,4 @@ vendor/
 tests/_output
 infection.log
 per-mutator.md
+data/
