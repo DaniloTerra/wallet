@@ -28,11 +28,15 @@ $containerBuilder->addDefinitions([
     },
 
     \Wallet\Model\Authorizer::class => function (Container $container) {
-        return new \Wallet\Adapter\AuthorizerAdapter();
+        return new \Wallet\Adapter\AuthorizerAdapter(
+            new \GuzzleHttp\Client()
+        );
     },
 
     \Wallet\Application\Notifier::class => function (Container $container) {
-        return new \Wallet\Adapter\NotifierAdapter();
+        return new \Wallet\Adapter\NotifierAdapter(
+            new \GuzzleHttp\Client()
+        );
     }
 ]);
 

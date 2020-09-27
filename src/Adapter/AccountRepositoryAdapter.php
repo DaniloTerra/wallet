@@ -9,8 +9,10 @@ use Wallet\Model\Account;
 use Wallet\Model\AccountRepository;
 use Wallet\Model\DbId;
 use Wallet\Model\Money;
+use Wallet\Model\MoneyTransferred;
 use Wallet\Model\Transaction;
 use Wallet\Model\TransactionCollection;
+use Wallet\Model\TransferFailedException;
 use Wallet\Model\User;
 use Wallet\Model\Merchant;
 use Wallet\Model\Wallet;
@@ -27,6 +29,7 @@ final class AccountRepositoryAdapter implements AccountRepository
         $this->connection = $connection;
     }
 
+
     public function get(DbId $id): Account
     {
         try {
@@ -40,6 +43,7 @@ final class AccountRepositoryAdapter implements AccountRepository
             // Retornar exception do domínio quando isso acontecer
         }
     }
+
 
     private function buildAccount(array $account, array $wallet): Account
     {
@@ -69,12 +73,6 @@ final class AccountRepositoryAdapter implements AccountRepository
     }
 
 
-    public function push(Account $account): void
-    {
-        // TODO: Implement push() method.
-    }
-
-
     private function selectAccount(DbId $id): array
     {
         $query = $this->connection->createQueryBuilder();
@@ -99,5 +97,63 @@ final class AccountRepositoryAdapter implements AccountRepository
             ->setParameter('userId', $id->getValue())
             ->execute()
             ->fetchAllAssociative();
+    }
+
+
+    public function push(MoneyTransferred $event): void
+    {
+        try {
+            $this->connection->beginTransaction();
+
+            $this->debitPayee($event->getPayee(), $event->getAmount());
+            $this->creditPayer($event->getPayer(), $event->getAmount());
+            $this->registerTransfer($event);
+
+            $this->connection->commit();
+        } catch (\Exception $error) {
+            $this->connection->rollBack();
+            throw new TransferFailedException();
+        }
+    }
+
+
+    private function debitPayee(Account $payee, Money $amount): void
+    {
+        $insert = $this->connection->createQueryBuilder();
+
+        $insert->insert('user_wallet')
+            ->setValue('user_id', ':userId')
+            ->setValue('debit', ':debit')
+            ->setParameter('userId', $payee->getId()->getValue())
+            ->setParameter('debit', $amount->getValue())
+            ->execute();
+    }
+
+
+    private function creditPayer(Account $payee, Money $amount): void
+    {
+        $insert = $this->connection->createQueryBuilder();
+
+        $insert->insert('user_wallet')
+            ->setValue('user_id', ':userId')
+            ->setValue('credit', ':credit')
+            ->setParameter('userId', $payee->getId()->getValue())
+            ->setParameter('credit', $amount->getValue())
+            ->execute();
+    }
+
+
+    private function registerTransfer(MoneyTransferred $event): void
+    {
+        $insert = $this->connection->createQueryBuilder();
+
+        $insert->insert('transfer')
+            ->setValue('user_payer_id', ':payerId')
+            ->setValue('user_payee_id', ':payeeId')
+            ->setValue('amount', ':amount')
+            ->setParameter('payerId', $event->getPayer()->getId()->getValue())
+            ->setParameter('payeeId', $event->getPayee()->getId()->getValue())
+            ->setParameter('amount', $event->getAmount()->getValue())
+            ->execute();
     }
 }

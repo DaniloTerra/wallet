@@ -18,12 +18,14 @@ final class Transfer
         $this->authorizer = $authorizer;
     }
 
-    public function transfer(Account $payer, Account $payee, Money $amount)
+    public function transfer(Account $payer, Account $payee, Money $amount): MoneyTransferred
     {
         $this->authorize();
 
         $payer->debit($amount);
         $payee->credit($amount);
+
+        return new MoneyTransferred($payer, $payee, $amount);
     }
 
     private function authorize()

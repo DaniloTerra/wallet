@@ -10,6 +10,7 @@ use Slim\Factory\AppFactory;
 use Wallet\Application\Command\Transfer;
 use Wallet\Application\Notifier;
 use Wallet\Model\AccountRepository;
+use Wallet\Model\Authorizer;
 use Wallet\Model\TransferService;
 
 $app = AppFactory::createFromContainer($container);
@@ -19,8 +20,8 @@ $app->post('/transaction', function (Request $request, Response $response, $args
 
     $command = new Transfer(
         $container->get(AccountRepository::class),
-        $container->get(TransferService::class),
-        $container->get(Notifier::class)
+        $container->get(Notifier::class),
+        $container->get(Authorizer::class)
     );
 
     $command->transfer(

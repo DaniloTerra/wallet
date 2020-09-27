@@ -8,19 +8,24 @@ final class Wallet
 {
     private TransactionCollection $transactions;
 
+    private TransactionCollection $newTransactions;
+
     private function __construct(TransactionCollection $transactions)
     {
         $this->transactions = $transactions;
+        $this->newTransactions = new TransactionCollection();
     }
 
     private function apply(Transaction $transaction)
     {
         if ($transaction->isDebit()) {
-            $this->debit($transaction->getAmount());
+            $debit = Transaction::debit($transaction->getAmount());
+            $this->transactions->push($debit);
         }
 
         if ($transaction->isCredit()) {
-            $this->credit($transaction->getAmount());
+            $credit = Transaction::credit($transaction->getAmount());
+            $this->transactions->push($credit);
         }
     }
 
@@ -32,13 +37,17 @@ final class Wallet
         }
 
         $debit = Transaction::debit($amount);
+
         $this->transactions->push($debit);
+        $this->newTransactions->push($debit);
     }
 
     public function credit(Money $amount): void
     {
         $credit = Transaction::credit($amount);
+
         $this->transactions->push($credit);
+        $this->newTransactions->push($credit);
     }
 
     public function getBalance(): Money
@@ -53,6 +62,11 @@ final class Wallet
             }
         }
         return $amount;
+    }
+
+    public function getNew(): TransactionCollection
+    {
+        return $this->newTransactions;
     }
 
     public static function fromTransactions(TransactionCollection $transactions): self

@@ -26,6 +26,12 @@ abstract class Account
         return $this->wallet->getBalance();
     }
 
+    // Achar um nome melhor para esse método
+    public function getNewTransactions(): TransactionCollection
+    {
+        return $this->wallet->getNew();
+    }
+
     abstract function debit(Money $amount): void;
 
     abstract function credit(Money $amount): void;

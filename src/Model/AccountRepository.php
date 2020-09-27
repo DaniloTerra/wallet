@@ -8,5 +8,5 @@ interface AccountRepository
 {
     public function get(DbId $id): Account;
 
-    public function push(Account $account): void;
+    public function push(MoneyTransferred $event): void;
 }

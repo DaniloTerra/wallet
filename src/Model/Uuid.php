@@ -8,13 +8,13 @@ use InvalidArgumentException;
 
 final class Uuid implements SingleValueObject
 {
-    private const PATTERN = '/^[0-9a-fA-F]{32}$/';
+    private const PATTERN = '^[0-9a-fA-F]{32}$';
 
     use SingleValueObjectBehavior;
 
     public function __construct(string $value)
     {
-        if (preg_match(sprintf("/%s/", static::PATTERN), $value)) {
+        if (!preg_match(sprintf("/%s/", static::PATTERN), $value)) {
             throw new InvalidArgumentException();
         }
 
